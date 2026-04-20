@@ -15,11 +15,16 @@
 
 ```text
 Kilogger/
+├─ pom.xml
 ├─ src/
-│  ├─ Main.java                 # 示例入口（演示多线程日志）
-│  └─ com/muimi/
-│     ├─ Kilogger.java          # 核心日志实现
-│     └─ Kitimer.java           # 时间戳缓存工具
+│  └─ main/
+│     └─ java/
+│        ├─ Main.java
+│        └─ com/muimi/
+│           ├─ Kilogger.java
+│           └─ Kitimer.java
+├─ LICENSE
+└─ README.md
 ```
 
 ## 快速开始
@@ -29,13 +34,19 @@ Kilogger/
 在项目根目录执行：
 
 ```powershell
-javac -encoding UTF-8 -d out src\com\muimi\*.java src\Main.java
+mvn clean compile
 ```
 
-### 2) 运行示例
+### 2) 打包
 
 ```powershell
-java -cp out Main
+mvn clean package
+```
+
+### 3) 运行示例
+
+```powershell
+java -cp target\classes Main
 ```
 
 运行后会生成日志文件（默认 `log.txt`，切换后如 `new.txt`）。
@@ -43,7 +54,7 @@ java -cp out Main
 ## 使用示例
 
 ```java
-import main.java.com.muimi.Kilogger;
+import com.muimi.Kilogger;
 
 public class Demo {
     public static void main(String[] args) {
@@ -85,17 +96,6 @@ public class Demo {
 - 请在程序退出前调用 `Kilogger.shutdown()`，避免日志丢失。
 - `Kilogger` 在类加载时会设置全局默认未捕获异常处理器，异常会写入日志。
 - 默认日志文件为 `log.txt`，运行示例中会切换到 `new.txt`。
-
-## GitHub 提交建议（基于当前 .gitignore）
-
-当前 `.gitignore` 已忽略 IDE 和构建产物（如 `out/`、`.idea/`、`*.iml`），这是合理的。
-
-另外两条规则可能影响仓库展示：
-
-- `**/Main.java`：会忽略示例入口文件。
-- `.gitignore`：会忽略 `.gitignore` 本身。
-
-如果你希望 GitHub 仓库包含示例入口和忽略规则文件，建议移除上述两条后再提交。
 
 ## License
 
