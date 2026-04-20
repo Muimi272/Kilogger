@@ -26,7 +26,15 @@ public class Kilogger {
 
     static {
         start();
-        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> Kilogger.error("线程【" + thread.getName() + "】抛出异常：\n" + getStackTrace(throwable) + "\n"));
+        Runtime.getRuntime().addShutdownHook(new Thread(Kilogger::shutdown));
+    }
+
+    /**
+     * This method has an empty body.
+     * Its purpose is to wake up the initialization of the logging thread and ensure that it is ready before being called, to avoid delays or thread safety issues when the logging method is called for the first time.
+     */
+    public static void awake() {
+        // Empty Method
     }
 
     private static void start() {
@@ -38,7 +46,7 @@ public class Kilogger {
             BlockingQueue<String> currentQueue = logQueue;
             logThread = new Thread(() -> {
                 try (BufferedWriter bw = Files.newBufferedWriter(logPath, StandardOpenOption.APPEND)) {
-                    bw.write(Kitimer.getCurrentTime() + "INFO: 日志线程启动成功");
+                    bw.write(Kitimer.getCurrentTime() + "INFO: 日志线程已启动");
                     bw.newLine();
                     bw.flush();
                     while (isRunning || !currentQueue.isEmpty()) {
@@ -60,15 +68,17 @@ public class Kilogger {
                     throw new ExceptionInInitializerError("初始化日志文件失败: " + e.getMessage());
                 }
             });
+            logThread.setName("Kilogger-Thread");
             logThread.setDaemon(true);
             logThread.start();
+            Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> Kilogger.error("线程 [" + thread.getName() + "] 抛出异常：\n" + getStackTrace(throwable) + "\n"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static boolean setLogFile(String logFile) {
-        info("更换输出文件：" + LOG_FILE_PATH + "->" + logFile);
+        info("更换输出文件：" + LOG_FILE_PATH + " -> " + logFile);
         try {
             shutdown();
             LOG_FILE_PATH = logFile;
@@ -132,8 +142,8 @@ public class Kilogger {
             e.printStackTrace();
             Thread.currentThread().interrupt();
         }
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(LOG_FILE_PATH),  StandardOpenOption.APPEND)) {
-            bw.write(Kitimer.getCurrentTime() + "INFO: 日志进程已关闭");
+        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(LOG_FILE_PATH), StandardOpenOption.APPEND)) {
+            bw.write(Kitimer.getCurrentTime() + "INFO: 日志线程已关闭");
             bw.newLine();
             bw.flush();
         } catch (IOException e) {
