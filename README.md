@@ -50,7 +50,7 @@ Kilogger/
 
 ```
 	dependencies {
-	        implementation 'com.github.Muimi272:Kilogger:Tag'
+	        implementation 'com.github.Muimi272:Kilogger:v1.0.0'
 	}
 ```
 
@@ -75,7 +75,7 @@ Kilogger/
 	<dependency>
 	    <groupId>com.github.Muimi272</groupId>
 	    <artifactId>Kilogger</artifactId>
-	    <version>Tag</version>
+	    <version>v1.0.0</version>
 	</dependency>
 ```
 
@@ -145,7 +145,7 @@ public class Demo {
 
 ## 注意事项
 
-- 请在程序退出前调用 `Kilogger.shutdown()`，避免日志丢失。
+- **请在程序退出前调用 `Kilogger.shutdown()`，避免日志丢失。**
 - `Kilogger` 在类加载时会设置全局默认未捕获异常处理器，异常会写入日志。
 - 默认日志文件为 `log.txt`，运行示例中会切换到 `new.txt`。
 
