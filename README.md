@@ -1,6 +1,7 @@
 # Kilogger
 
 一个轻量级的 Java 异步日志工具，支持多线程写入、日志级别区分、运行时切换日志文件，以及程序退出前的日志队列清空。
+[![](https://jitpack.io/v/Muimi272/Kilogger.svg)](https://jitpack.io/#Muimi272/Kilogger)
 
 ## 功能特性
 
@@ -25,6 +26,57 @@ Kilogger/
 │           └─ Kitimer.java
 ├─ LICENSE
 └─ README.md
+```
+
+## 导入项目
+
+### Gradle
+
+#### Step 1. Add the JitPack repository to your build file
+
+- Add it in your root settings.gradle at the end of repositories:
+
+```
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+#### Step 2. Add the dependency
+
+```
+	dependencies {
+	        implementation 'com.github.Muimi272:Kilogger:Tag'
+	}
+```
+
+### Maven
+
+#### Step 1. Add the JitPack repository to your build file
+
+- Add to pom.xml
+
+```
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+
+#### Step 2. Add the dependency
+
+```
+	<dependency>
+	    <groupId>com.github.Muimi272</groupId>
+	    <artifactId>Kilogger</artifactId>
+	    <version>Tag</version>
+	</dependency>
 ```
 
 ## 快速开始
