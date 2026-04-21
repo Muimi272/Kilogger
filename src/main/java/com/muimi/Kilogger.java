@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings({"CallToPrintStackTrace", "unused", "UnusedReturnValue"})
 public class Kilogger {
-    private static final int QUEUE_CAPACITY = 1000;
+    private static final int QUEUE_CAPACITY = 1024;
     public static final String[] TYPES = {"INFO", "WARN", "ERROR"};
 
     private static String LOG_FILE_PATH = "log.txt";

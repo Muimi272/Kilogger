@@ -135,7 +135,7 @@ public class Demo {
 
 ### 线程模型说明
 
-- 内部使用 `LinkedBlockingQueue`（容量 `1000`）缓存日志。
+- 内部使用 `LinkedBlockingQueue`（容量 `1024`）缓存日志。
 - 业务线程调用日志方法时将消息入队。
 - 后台守护线程从队列取出并追加写入文件。
 - 通过 `shutdown()` 停止线程并等待队列清空。
@@ -281,7 +281,7 @@ public class Demo {
 
 ### Threading Model
 
-- Uses a `LinkedBlockingQueue` (capacity `1000`) for buffering.
+- Uses a `LinkedBlockingQueue` (capacity `1024`) for buffering.
 - Application threads enqueue messages through log APIs.
 - A daemon thread consumes queue entries and appends them to file.
 - `shutdown()` stops the thread and waits for queue draining.
