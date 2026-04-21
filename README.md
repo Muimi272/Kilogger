@@ -53,7 +53,7 @@ dependencyResolutionManagement {
 
 ```groovy
 dependencies {
-	implementation 'com.github.Muimi272:Kilogger:v1.0.0'
+	implementation 'com.github.Muimi272:Kilogger:v1.1.0'
 }
 ```
 
@@ -76,7 +76,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.Muimi272</groupId>
 	<artifactId>Kilogger</artifactId>
-	<version>v1.0.0</version>
+	<version>v1.1.0</version>
 </dependency>
 ```
 
@@ -199,7 +199,7 @@ dependencyResolutionManagement {
 
 ```groovy
 dependencies {
-	implementation 'com.github.Muimi272:Kilogger:v1.0.0'
+	implementation 'com.github.Muimi272:Kilogger:v1.1.0'
 }
 ```
 
@@ -222,7 +222,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.Muimi272</groupId>
 	<artifactId>Kilogger</artifactId>
-	<version>v1.0.0</version>
+	<version>v1.1.0</version>
 </dependency>
 ```
 
