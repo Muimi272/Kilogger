@@ -46,7 +46,7 @@ public class Kilogger {
             BlockingQueue<String> currentQueue = logQueue;
             logThread = new Thread(() -> {
                 try (BufferedWriter bw = Files.newBufferedWriter(logPath, StandardOpenOption.APPEND)) {
-                    bw.write(Kitimer.getCurrentTime() + "INFO: 日志线程已启动");
+                    bw.write(Kitimer.getCurrentTime() + " INFO: 日志线程已启动");
                     bw.newLine();
                     bw.flush();
                     while (isRunning || !currentQueue.isEmpty()) {
@@ -143,7 +143,7 @@ public class Kilogger {
             Thread.currentThread().interrupt();
         }
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(LOG_FILE_PATH), StandardOpenOption.APPEND)) {
-            bw.write(Kitimer.getCurrentTime() + "INFO: 日志线程已关闭");
+            bw.write(Kitimer.getCurrentTime() + " INFO: 日志线程已关闭");
             bw.newLine();
             bw.flush();
         } catch (IOException e) {
