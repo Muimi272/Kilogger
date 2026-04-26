@@ -2,7 +2,7 @@
 
 一个轻量级的 Java 异步日志工具，支持多线程写入、日志级别区分、运行时切换日志文件，以及程序退出前的日志队列清空。
 
-[![](https://jitpack.io/v/Muimi272/Kilogger.svg)](https://jitpack.io/#Muimi272/Kilogger)
+[![Maven Central](https://img.shields.io/maven-central/v/club.muimi/kilogger?label=Maven%20Central)](https://central.sonatype.com/artifact/club.muimi/kilogger)
 
 ---
 
@@ -34,48 +34,27 @@ Kilogger/
 
 ### 导入项目
 
+Maven Central 页面：<https://central.sonatype.com/artifact/club.muimi/kilogger>
+
 ### Gradle
 
-1. 在根 `settings.gradle`（或 `settings.gradle.kts`）中添加 JitPack 仓库：
-
-```groovy
-dependencyResolutionManagement {
-	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-	repositories {
-		mavenCentral()
-		maven { url 'https://jitpack.io' }
-	}
-}
-```
-
-2. 在模块 `build.gradle` 中添加依赖：
+在模块 `build.gradle` 中添加依赖：
 
 ```groovy
 dependencies {
-	implementation 'com.github.Muimi272:Kilogger:v1.1.0'
+	implementation 'club.muimi:kilogger:1.1.2'
 }
 ```
 
 ### Maven
 
-1. 在 `pom.xml` 中添加 JitPack 仓库：
-
-```xml
-<repositories>
-	<repository>
-		<id>jitpack.io</id>
-		<url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
-
-2. 添加依赖：
+在 `pom.xml` 中添加依赖：
 
 ```xml
 <dependency>
-	<groupId>com.github.Muimi272</groupId>
-	<artifactId>Kilogger</artifactId>
-	<version>v1.1.0</version>
+	<groupId>club.muimi</groupId>
+	<artifactId>kilogger</artifactId>
+	<version>1.1.2</version>
 </dependency>
 ```
 
@@ -179,48 +158,27 @@ Kilogger/
 
 ### Installation
 
+Maven Central page: <https://central.sonatype.com/artifact/club.muimi/kilogger>
+
 #### Gradle
 
-1. Add JitPack to your root `settings.gradle` (or `settings.gradle.kts`):
-
-```groovy
-dependencyResolutionManagement {
-	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-	repositories {
-		mavenCentral()
-		maven { url 'https://jitpack.io' }
-	}
-}
-```
-
-2. Add dependency in your module `build.gradle`:
+Add dependency in your module `build.gradle`:
 
 ```groovy
 dependencies {
-	implementation 'com.github.Muimi272:Kilogger:v1.1.0'
+	implementation 'club.muimi:kilogger:1.1.2'
 }
 ```
 
 #### Maven
 
-1. Add JitPack repository in your `pom.xml`:
-
-```xml
-<repositories>
-	<repository>
-		<id>jitpack.io</id>
-		<url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
-
-2. Add dependency:
+Add dependency:
 
 ```xml
 <dependency>
-	<groupId>com.github.Muimi272</groupId>
-	<artifactId>Kilogger</artifactId>
-	<version>v1.1.0</version>
+	<groupId>club.muimi</groupId>
+	<artifactId>kilogger</artifactId>
+	<version>1.1.2</version>
 </dependency>
 ```
 
