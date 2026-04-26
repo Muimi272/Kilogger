@@ -1,6 +1,6 @@
 # Kilogger
 
-一个轻量级的 Java 异步日志工具，支持多线程写入、日志级别区分、运行时切换日志文件，以及程序退出前的日志队列清空。
+Kilogger 是 KiCol 中的异步日志工具类模块，支持多线程写入、日志级别区分、运行时切换日志文件，以及程序退出前的日志队列清空。
 
 [![Maven Central](https://img.shields.io/maven-central/v/club.muimi/kilogger?label=Maven%20Central)](https://central.sonatype.com/artifact/club.muimi/kilogger)
 
