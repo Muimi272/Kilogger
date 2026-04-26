@@ -1,5 +1,7 @@
 package com.muimi;
 
+import club.muimi.Kitimer;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -25,6 +30,7 @@ public class Kilogger {
     private static volatile boolean isRunning = false;
 
     static {
+        Kitimer.setFormatter(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault()));
         start();
         Runtime.getRuntime().addShutdownHook(new Thread(Kilogger::shutdown));
     }
@@ -46,7 +52,7 @@ public class Kilogger {
             BlockingQueue<String> currentQueue = logQueue;
             logThread = new Thread(() -> {
                 try (BufferedWriter bw = Files.newBufferedWriter(logPath, StandardOpenOption.APPEND)) {
-                    bw.write(Kitimer.getCurrentTime() + " INFO: 日志线程已启动");
+                    bw.write("[" + Kitimer.getCurrentTime() + "]" + " INFO: 日志线程已启动");
                     bw.newLine();
                     bw.flush();
                     while (isRunning || !currentQueue.isEmpty()) {
@@ -91,7 +97,7 @@ public class Kilogger {
 
     public static boolean info(String message) {
         try {
-            logQueue.put(Kitimer.getCurrentTime() + " " + TYPES[0] + ": " + message);
+            logQueue.put("[" + Kitimer.getCurrentTime() + "]" + " " + TYPES[0] + ": " + message);
             return true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -101,7 +107,7 @@ public class Kilogger {
 
     public static boolean warn(String message) {
         try {
-            logQueue.put(Kitimer.getCurrentTime() + " " + TYPES[1] + ": " + message);
+            logQueue.put("[" + Kitimer.getCurrentTime() + "]" + " " + TYPES[1] + ": " + message);
             return true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -111,7 +117,7 @@ public class Kilogger {
 
     public static boolean error(String message) {
         try {
-            logQueue.put(Kitimer.getCurrentTime() + " " + TYPES[2] + ": " + message);
+            logQueue.put("[" + Kitimer.getCurrentTime() + "]" + " " + TYPES[2] + ": " + message);
             return true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -121,7 +127,7 @@ public class Kilogger {
 
     public static boolean log(String message, String type) {
         try {
-            logQueue.put(Kitimer.getCurrentTime() + " " + type.toUpperCase() + ": " + message);
+            logQueue.put("[" + Kitimer.getCurrentTime() + "]" + " " + type.toUpperCase() + ": " + message);
             return true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -143,7 +149,7 @@ public class Kilogger {
             Thread.currentThread().interrupt();
         }
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(LOG_FILE_PATH), StandardOpenOption.APPEND)) {
-            bw.write(Kitimer.getCurrentTime() + " INFO: 日志线程已关闭");
+            bw.write("[" + Kitimer.getCurrentTime() + "]" + " INFO: 日志线程已关闭");
             bw.newLine();
             bw.flush();
         } catch (IOException e) {

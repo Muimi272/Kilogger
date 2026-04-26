@@ -28,7 +28,6 @@ Kilogger/
 |        |- Main.java
 |        \- com/muimi/
 |           |- Kilogger.java
-|           \- Kitimer.java
 |- LICENSE
 \- README.md
 ```
@@ -174,7 +173,6 @@ Kilogger/
 |        |- Main.java
 |        \- com/muimi/
 |           |- Kilogger.java
-|           \- Kitimer.java
 |- LICENSE
 \- README.md
 ```
