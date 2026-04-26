@@ -19,6 +19,14 @@
         <maven.javadoc.skip>true</maven.javadoc.skip>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>club.muimi</groupId>
+            <artifactId>Kitimer</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

@@ -1,5 +1,7 @@
 package com.muimi;
 
+import club.muimi.Kitimer;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -25,6 +30,7 @@ public class Kilogger {
     private static volatile boolean isRunning = false;
 
     static {
+        Kitimer.setFormatter(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault()));
         start();
         Runtime.getRuntime().addShutdownHook(new Thread(Kilogger::shutdown));
     }
